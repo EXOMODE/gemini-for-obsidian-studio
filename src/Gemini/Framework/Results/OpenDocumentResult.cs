@@ -3,10 +3,11 @@ using System.ComponentModel.Composition;
 using Caliburn.Micro;
 using Gemini.Framework.Services;
 using Gemini.Modules.Shell.Commands;
+using Gemini.Framework.Threading;
 
 namespace Gemini.Framework.Results
 {
-	public class OpenDocumentResult : OpenResultBase<IDocument>
+    public class OpenDocumentResult : OpenResultBase<IDocument>
 	{
 		private readonly IDocument _editor;
 		private readonly Type _editorType;
@@ -52,13 +53,15 @@ namespace Gemini.Framework.Results
 				_onConfigure(editor);
 
 			editor.Deactivated += (s, e) =>
-			{
-				if (!e.WasClosed)
-					return;
+            {
+                if (!e.WasClosed)
+                    return TaskUtility.Completed;
 
-				if (_onShutDown != null)
-					_onShutDown(editor);
-			};
+                if (_onShutDown != null)
+                    _onShutDown(editor);
+
+                return TaskUtility.Completed;
+            };
 
 			_shell
                 .OpenDocumentAsync(editor)

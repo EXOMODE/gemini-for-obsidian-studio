@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Gemini.Framework;
 using Gemini.Framework.Threading;
 using Gemini.Modules.CodeEditor.Views;
@@ -22,6 +23,12 @@ namespace Gemini.Modules.CodeEditor.ViewModels
         public CodeEditorViewModel(LanguageDefinitionManager languageDefinitionManager)
         {
             _languageDefinitionManager = languageDefinitionManager;
+        }
+
+        protected override void OnViewReady(object view)
+        {
+            base.OnViewReady(view);
+            (view as CodeEditorView).MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }
 
         public override bool ShouldReopenOnStart
@@ -59,19 +66,20 @@ namespace Gemini.Modules.CodeEditor.ViewModels
             return TaskUtility.Completed;
         }
 
-        protected override Task DoLoad(string filePath)
+        protected override async Task DoLoad(string filePath)
         {
-            _originalText = File.ReadAllText(filePath);
-            ApplyOriginalText();
-            return TaskUtility.Completed;
+            if (File.Exists(filePath))
+            {
+                _originalText = await File.ReadAllTextAsync(filePath);
+                ApplyOriginalText();
+            }
         }
 
-        protected override Task DoSave(string filePath)
+        protected override async Task DoSave(string filePath)
         {
             var newText = _view.TextEditor.Text;
-            File.WriteAllText(filePath, newText);
+            await File.WriteAllTextAsync(filePath, newText);
             _originalText = newText;
-            return TaskUtility.Completed;
         }
 
         private void ApplyOriginalText()

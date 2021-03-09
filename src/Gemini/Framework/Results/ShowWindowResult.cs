@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.Composition;
 using Caliburn.Micro;
+using Gemini.Framework.Threading;
 
 namespace Gemini.Framework.Results
 {
@@ -35,12 +36,14 @@ namespace Gemini.Framework.Results
             window.Deactivated += (s, e) =>
             {
                 if (!e.WasClosed)
-                    return;
+                    return TaskUtility.Completed;
 
                 if (_onShutDown != null)
                     _onShutDown(window);
 
                 OnCompleted(null, false);
+
+                return TaskUtility.Completed;
             };
 
             WindowManager.ShowWindowAsync(window);

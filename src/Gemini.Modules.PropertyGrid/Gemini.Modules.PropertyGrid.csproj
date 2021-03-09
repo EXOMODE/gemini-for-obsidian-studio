@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFramework>net6-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <PackageTags>core WPF MVVM AvalonDock Caliburn Micro Visual Studio IDE Shell PropertyGrid</PackageTags>
     <Description>PropertyGrid module for Gemini, utilising the PropertyGrid control from the Extended WPF Toolkit.</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +29,10 @@
 
   <ItemGroup>
     <Resource Include="Resources\Icons\Properties.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.4.165-alpha" />
   </ItemGroup>
   
 </Project>

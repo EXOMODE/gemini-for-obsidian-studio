@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.ComponentModel.Composition;
 using Caliburn.Micro;
 using Gemini.Framework.Services;
+using Gemini.Framework.Threading;
 
 namespace Gemini.Framework.Results
 {
@@ -36,15 +37,17 @@ namespace Gemini.Framework.Results
 				_onConfigure(tool);
 
 			tool.Deactivated += (s, e) =>
-			{
-				if (!e.WasClosed)
-					return;
+            {
+                if (!e.WasClosed)
+                    return TaskUtility.Completed;
 
-				if (_onShutDown != null)
-					_onShutDown(tool);
+                if (_onShutDown != null)
+                    _onShutDown(tool);
 
-				OnCompleted(null, false);
-			};
+                OnCompleted(null, false);
+
+                return TaskUtility.Completed;
+            };
 
 			_shell.ShowTool(tool);
 		}

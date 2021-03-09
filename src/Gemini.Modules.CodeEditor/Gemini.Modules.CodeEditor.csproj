@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <TargetFramework>net6-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <PackageTags>core WPF MVVM AvalonDock Caliburn Micro Visual Studio IDE Shell C# syntax highlighting AvalonEdit</PackageTags>
     <Description>CodeEditor module for Gemini, providing a syntax-highlighted code editor using AvalonEdit.</Description>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,7 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AvalonEdit" Version="6.0.0" />
+    <PackageReference Include="AvalonEdit" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.4.165-alpha" />
   </ItemGroup>
 
 </Project>

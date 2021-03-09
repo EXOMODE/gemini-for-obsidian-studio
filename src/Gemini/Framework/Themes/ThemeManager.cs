@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Original source code from the Wide framework:
  * https://github.com/chandramouleswaran/Wide
  * 
@@ -68,7 +68,11 @@ namespace Gemini.Framework.Themes
             _applicationResourceDictionary.BeginInit();
             _applicationResourceDictionary.MergedDictionaries.Clear();
 
-            var windowResourceDictionary = mainWindow.Resources.MergedDictionaries[0];
+            var windowResourceDictionary = mainWindow.Resources;
+
+            if (windowResourceDictionary.MergedDictionaries.Count > 0)
+                windowResourceDictionary = windowResourceDictionary.MergedDictionaries[0];
+
             windowResourceDictionary.BeginInit();
             windowResourceDictionary.MergedDictionaries.Clear();
 

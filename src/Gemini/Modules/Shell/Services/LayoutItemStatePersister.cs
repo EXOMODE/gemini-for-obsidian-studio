@@ -120,7 +120,7 @@ namespace Gemini.Modules.Shell.Services
                     writer.Write(itemCount);
                     writer.BaseStream.Seek(0, SeekOrigin.End);
 
-                    shellView.SaveLayout(writer.BaseStream);
+                    shellView?.SaveLayout(writer.BaseStream);
                 }
             }
             catch
@@ -189,7 +189,15 @@ namespace Gemini.Modules.Shell.Services
                         // Skip state data block if we couldn't read it.
                         if (skipStateData)
                         {
-                            reader.BaseStream.Seek(stateEndPosition, SeekOrigin.Begin);
+#if OBSIDIAN
+                            try
+                            {
+#endif
+                                reader.BaseStream.Seek(stateEndPosition, SeekOrigin.Begin);
+#if OBSIDIAN
+                            }
+                            catch { }
+#endif
                         }
                     }
 
