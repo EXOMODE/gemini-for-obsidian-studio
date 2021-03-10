@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <PackageTags>core WPF MVVM AvalonDock Caliburn Micro Visual Studio IDE Shell PropertyGrid</PackageTags>
     <Description>PropertyGrid module for Gemini, utilising the PropertyGrid control from the Extended WPF Toolkit.</Description>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

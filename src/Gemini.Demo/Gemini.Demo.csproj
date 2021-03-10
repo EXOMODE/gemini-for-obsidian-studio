@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsPackable>false</IsPackable>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -64,7 +64,6 @@
   <ItemGroup>
     <PackageReference Include="JeremyAnsel.HLSL.Targets" Version="1.0.10" />
       <PackageReference Include="HelixToolkit.Core.Wpf" Version="2.15.0" />
-      <PackageReference Include="HelixToolkit.Wpf" Version="2.15.0" />
   </ItemGroup>
 
   <ItemGroup>
