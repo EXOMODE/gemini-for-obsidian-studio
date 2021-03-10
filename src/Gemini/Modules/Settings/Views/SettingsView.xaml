@@ -1,19 +1,24 @@
-<Window
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:cal="http://www.caliburnproject.org"
-    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:geminibehaviors="clr-namespace:Gemini.Framework.Behaviors"
-    x:Class="Gemini.Modules.Settings.Views.SettingsView" 
-    mc:Ignorable="d" 
-    d:DataContext="{d:DesignData Source=../SampleData/SettingsViewModelSampleData.xaml}"
-    Background="{DynamicResource EnvironmentWindowBackground}"
-    Foreground="{DynamicResource EnvironmentWindowText}"
-    Width="760" Height="500" MinWidth="512" MinHeight="300" 
-    WindowStartupLocation="CenterOwner"
-    ShowInTaskbar="False">
+<mahapps:MetroWindow xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:cal="http://www.caliburnproject.org"
+                     xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+                     xmlns:geminibehaviors="clr-namespace:Gemini.Framework.Behaviors"
+                     x:Class="Gemini.Modules.Settings.Views.SettingsView" 
+                     mc:Ignorable="d" 
+                     d:DataContext="{d:DesignData Source=../SampleData/SettingsViewModelSampleData.xaml}"
+                     Background="{DynamicResource EnvironmentWindowBackground}"
+                     Foreground="{DynamicResource EnvironmentWindowText}"
+                     Width="760" Height="500" MinWidth="512" MinHeight="300" 
+                     WindowStartupLocation="CenterOwner"
+                     IsMinButtonEnabled="False"
+                     SaveWindowPosition="True"
+                     ShowInTaskbar="False"
+                     ResizeMode="CanResizeWithGrip"
+                     UseLayoutRounding="True"
+                     Style="{DynamicResource MainWindowStyle}">
     <behaviors:Interaction.Behaviors>
         <geminibehaviors:WindowOptionsBehavior ShowIcon="False"
                                                ShowMinimizeBox="False"
@@ -41,7 +46,7 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        
+
         <Grid Grid.Row="0" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -60,7 +65,7 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-            
+
             <Rectangle Grid.Row="1" Height="1" Fill="{x:Static SystemColors.ActiveBorderBrush}"
                        VerticalAlignment="Bottom"/>
         </Grid>
@@ -83,4 +88,4 @@
             <Button Grid.Column="1" IsCancel="True" MinWidth="80" cal:Message.Attach="Cancel">Cancel</Button>
         </Grid>
     </Grid>
-</Window>
+</mahapps:MetroWindow>

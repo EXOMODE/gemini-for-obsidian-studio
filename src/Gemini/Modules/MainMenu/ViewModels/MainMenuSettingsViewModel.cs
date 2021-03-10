@@ -46,6 +46,7 @@ namespace Gemini.Modules.MainMenu.ViewModels
             {
                 if (value.Equals(_selectedTheme)) return;
                 _selectedTheme = value;
+                Properties.Settings.Default.ThemeName = SelectedTheme.GetType().Name;
                 NotifyOfPropertyChange(() => SelectedTheme);
             }
         }
