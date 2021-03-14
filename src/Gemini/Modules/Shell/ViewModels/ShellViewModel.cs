@@ -261,9 +261,6 @@ namespace Gemini.Modules.Shell.ViewModels
             await base.OnDeactivateAsync(close, cancellationToken);
         }
 
-        public void Close()
-        {
-            Application.Current.MainWindow.Close();
-        }
+        public void Close() => Application.Current.MainWindow?.Close();
     }
 }

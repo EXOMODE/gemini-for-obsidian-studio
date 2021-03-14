@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.Composition;
+using System.ComponentModel.Composition;
 using Gemini.Framework.Services;
 using Gemini.Modules.MainMenu.Models;
 using ExtensionMethods = Gemini.Framework.Services.ExtensionMethods;
